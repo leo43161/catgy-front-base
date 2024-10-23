@@ -9,7 +9,7 @@ const productSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: (builder) => {
+  /* extraReducers: (builder) => {
     builder
       .addMatcher(apiService.endpoints.fetchProducts.matchPending, (state) => {
         state.isLoading = true;
@@ -22,7 +22,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.error = action.error;
       });
-  },
+  }, */
 });
 
 export default productSlice.reducer;
