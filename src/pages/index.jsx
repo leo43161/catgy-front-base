@@ -3,21 +3,17 @@ import CategoryList from '@/components/CategoryList';
 import ProductCard from '@/components/ProductCard';
 import { useSelector } from 'react-redux';
 import { ShoppingCart } from 'lucide-react';
+import { useGetCategoriesQuery, useGetProductsQuery } from '@/redux/services/apiService';
 
 export default function Home() {
+  const { data: _categories, isLoading, error, refetch } = useGetCategoriesQuery();
+  const { data: _products } = useGetProductsQuery({ limit: 10, offset: 0, search: '' });
+  console.log(_categories);
+  console.log(_products);
   const MobilePrueba = true;
-  // Ejemplos de categorías
-  const _categories = [
-    { id: '1', name: 'Iluminacion' },
-    { id: '2', name: 'Decoracion' },
-    { id: '3', name: 'Hogar' },
-    { id: '4', name: 'Electrónica' },
-    { id: '5', name: 'Juguetes' },
-    { id: '6', name: 'Ropa' }
-  ];
 
   // Ejemplos de productos
-  const _products = [
+  /* const _products = [
     {
       id: '101',
       name: 'Foco RGB incandescente',
@@ -60,11 +56,9 @@ export default function Home() {
       imageURL: '/images/globo2.png',
       categoryIDs: ['2'] // Decoracion
     }
-  ];
-  //const { categories } = useSelector((state) => state.categories);
-  //const { categories } = useSelector((state) => state.categories);
-  const { categories } = { categories: _categories };
-  const { products } = { products: _products };
+  ]; */
+  const { categories } = { categories: _categories ? _categories : [] };
+  const { products } = { products: _products ? _products.products : [] };
 
   return (
     <div className={MobilePrueba ? 'mx-auto md:w-4/12 md:px-0 w-full px-2' : 'container mx-auto'}>
@@ -80,7 +74,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-4">Productos Recientes</h2>
         <div className={MobilePrueba ? 'gap-4 grid grid-cols-2' : "flex flex-col gap-4"}>
           {products.slice(0, 6).map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       </div>

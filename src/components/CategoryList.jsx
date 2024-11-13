@@ -7,7 +7,7 @@ const CategoryList = ({ categories }) => {
         {categories.length > 0 ? (
           categories.map((category, idx) => (
             <div className="snap-start scroll-mx-6 shrink-0">
-              <Link href={`/category/${category.id}`} key={category.id}>
+              <Link href={`/category/${category.id}`} key={category._id}>
                 <div className={"rounded-lg font-bold text-[0.73rem] py-2 px-4 " + (idx === 0 ?
                   "hover:bg-light text-white bg-primary" :
                   "text-primary border")}>
