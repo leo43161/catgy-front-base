@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { LumaSplatsSemantics, LumaSplatsThree } from "@lumaai/luma-web";
 
 const ModelViewer = () => {
     const mountRef = useRef(null);
@@ -11,28 +12,52 @@ const ModelViewer = () => {
         // Crear escena, cámara y renderizador
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
-            20,
+            40,
             mountRef.current.clientWidth / mountRef.current.clientHeight,
             0.1,
             1000
         );
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+        renderer.setPixelRatio(1);
         renderer.setSize(
             mountRef.current.clientWidth,
             mountRef.current.clientHeight
         );
+        renderer.setClearColor(0x000000, 0); // Color negro con transparencia
         mountRef.current.appendChild(renderer.domElement);
 
         // Agregar luz
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(0, 10, 1).normalize();
-        scene.add(light);
+        /* const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(0, 0, 1).normalize();
+        scene.add(light); */
 
         // Crear un modelo (cubo como ejemplo)
-        const geometry = new THREE.BoxGeometry();
+        /* const geometry = new THREE.BoxGeometry();
         const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
         const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        scene.add(cube); */
+
+        //LUMA ESCULTURE
+        let splats = new LumaSplatsThree({
+            // Jules Desbois La Femme à l’arc @HouseofJJD
+            source: 'https://lumalabs.ai/capture/1b5f3e33-3900-4398-8795-b585ae13fd2d',
+            enableThreeShaderIntegration: false,
+        });
+
+        scene.add(splats);
+
+        let layersEnabled = {
+            Background: false,
+            Foreground: true,
+        }
+
+        function updateSemanticMask() {
+            splats.semanticsMask =
+                (layersEnabled.Background ? LumaSplatsSemantics.BACKGROUND : 0) |
+                (layersEnabled.Foreground ? LumaSplatsSemantics.FOREGROUND : 0);
+        }
+    
+        updateSemanticMask();
 
         // Configurar cámara
         camera.position.z = 5;
@@ -49,7 +74,7 @@ const ModelViewer = () => {
 
             const currentX = event.clientX || event.touches[0].clientX;
             const deltaX = currentX - previousX;
-            cube.rotation.y += deltaX * 0.01; // Ajusta la sensibilidad
+            splats.rotation.y += deltaX * 0.01; // Ajusta la sensibilidad
             velocity.current = deltaX * 0.005; // Guarda la velocidad para la inercia
             previousX = currentX;
         };
@@ -64,7 +89,7 @@ const ModelViewer = () => {
 
             if (!isDragging) {
                 // Aplicar inercia si no hay interacción
-                cube.rotation.y += velocity.current;
+                splats.rotation.y += velocity.current;
                 velocity.current *= 0.95; // Reducir la velocidad (fricción)
 
                 // Detener inercia cuando sea casi cero
