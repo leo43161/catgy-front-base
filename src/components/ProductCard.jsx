@@ -10,8 +10,8 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
-      <div className="relative">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white card-glass flex flex-col">
+      <div className="relative flex-none">
         <img
           src={`${process.env.URL_IMG}products/${product.imagen}`}
           alt={product.imagen}
@@ -26,20 +26,20 @@ export default function ProductCard({ product }) {
           />
         </button> */}
       </div>
-      <div className="p-4">
-        <h3 className="text-xl font-semibold text-gray-900">{product.name}</h3>
-        <div className="flex space-x-2 my-2">
+      <div className="p-4 flex-1 flex justify-between flex-col">
+        <h3 className="text-xl font-semibold text-gray-900 mb-0">{product.name}</h3>
+        <div className="flex space-x-2 my-3">
           {product?.categoryIDs?.map((category) => (
             <span key={category._id} className="px-2 py-1 bg-gray-200 text-gray-800 rounded text-xs">{category.name}</span>
           ))}
         </div>
-        <p className="text-gray-600 text-sm line-clamp-3">
+        <p className="text-gray-600 text-sm line-clamp-3 py-1">
           {product.description}
         </p>
         <div className="flex justify-between items-center mt-4">
           <span className="text-lg font-bold text-gray-900">${product.price}</span>
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-            Add to cart
+          <button className="bg-primary text-white px-4 py-2 rounded hover:bg-indigo-700">
+            +
           </button>
         </div>
       </div>
