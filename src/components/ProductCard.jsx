@@ -1,6 +1,6 @@
 // components/ProductCard.jsx
 import { useState } from 'react';
-import { HeartIcon } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 export default function ProductCard({ product }) {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -38,8 +38,8 @@ export default function ProductCard({ product }) {
         </p>
         <div className="flex justify-between items-center mt-4">
           <span className="text-lg font-bold text-gray-900">${product.price}</span>
-          <button className="bg-primary text-white px-4 py-2 rounded hover:bg-indigo-700">
-            +
+          <button className="bg-primary text-white px-1 py-1 rounded hover:bg-indigo-700">
+            <Plus />
           </button>
         </div>
       </div>
