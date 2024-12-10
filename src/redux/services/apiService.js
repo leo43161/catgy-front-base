@@ -11,8 +11,7 @@ export const apiService = createApi({
       }),
     }),
     getProductById: builder.query({
-      query: (id) => `/products/${id}`,
-      transformResponse: (response) => response.data,
+      query: (id) => `/products/${id}`
     }),
     getCategories: builder.query({
       query: () => 'categories?type=all',
