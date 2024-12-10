@@ -22,10 +22,10 @@ export default function Home() {
           <div className='flex justify-between items-center mb-4'>
             <h1 className="text-2xl font-bold">Monnet</h1>
             <div className='relative'>
-              <span class="absolute flex h-3 w-3 top-[-4px] right-0">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="absolute flex h-3 w-3 top-[-4px] right-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span
-                  class="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[10px] text-white text-center"
+                  className="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[10px] text-white text-center"
                 >
                   5
                 </span>
