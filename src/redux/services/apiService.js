@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiService = createApi({
   reducerPath: 'apiService',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://catgy.netlify.app/api' }), // Cambia a la URL base de tu API
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.URL_SERVER }), // Cambia a la URL base de tu API
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({ limit, offset, search }) => ({
+      query: ({ limit, offset, search, category }) => ({
         url: `/products`,
-        params: { limit, offset, search },
+        params: { limit, offset, search, category },
       }),
     }),
     getProductById: builder.query({

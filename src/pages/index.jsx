@@ -5,14 +5,18 @@ import { useSelector } from 'react-redux';
 import { ReceiptText } from 'lucide-react';
 import { useGetProductsQuery } from '@/redux/services/apiService';
 import ModelViewer from '@/components/ModelViewer';
+import { useState } from 'react';
 
 export default function Home() {
-  const { data: _products } = useGetProductsQuery({ limit: 10, offset: 0, search: '' });
+  const [categorySelected, setCategorySelected] = useState('');
+  const { data: _products } = useGetProductsQuery({
+    limit: 10,
+    offset: 0,
+    search: '',
+    category: categorySelected,
+  }, { refetchOnMountOrArgChange: true });
   const MobilePrueba = true;
-
-  /* const { categories } = { categories: _categories ? _categories : [] }; */
   const { products } = { products: _products ? _products.products : [] };
-  console.log(products);
 
   return (
     <div className="bg-neutral-50">
@@ -33,7 +37,7 @@ export default function Home() {
               <ReceiptText color="black" size={25} />
             </div>
           </div>
-          <CategoryList/>
+          <CategoryList categorySelected={categorySelected} setCategorySelected={setCategorySelected} />
 
           <h2 className="text-2xl font-bold mb-4">Productos Recientes</h2>
           {/* <div className="">
