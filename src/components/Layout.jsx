@@ -10,8 +10,8 @@ export default function Layout({ children }) {
                 <title>Catgy</title>
             </Head>
             <div className={MobilePrueba ? 'mx-auto md:w-4/12 md:px-0 w-full relative' : 'container mx-auto'}>
-                <div className='p-4'>
-                    <div className='flex justify-between items-center mb-4'>
+                <div>
+                    <div className='flex justify-between items-center mb-4 pt-4 px-4'>
                         <h1 className="text-2xl font-bold">Monet</h1>
                         <div className='relative'>
                             <span className="absolute flex h-3 w-3 top-[-4px] right-0">

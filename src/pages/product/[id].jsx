@@ -17,12 +17,26 @@ const Product = () => {
     );
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-            {/* <img src={product.imagen} alt={product.name} className="w-full h-auto mb-4" /> */}
-            <p className="text-xl mb-2">Price: ${product.price}</p>
-            <p className="text-md">{product.description}</p>
-        </div>
+        <>
+            <div className="container mx-auto min-h-screen px-4">
+                <div className="h-[50vh] overflow-hidden flex justify-center items-center rounded-xl mb-4">
+                    <img
+                        src={`${process.env.URL_IMG}products/${product.imagen}`}
+                        alt={product.name} className="object-cover"
+                    />
+                </div>
+                <h1 className="font-bold mb-3 text-3xl text-center">{product.name}</h1>
+                <hr className="mb-4" />
+                <p className="text-md text-justify">{product.description}</p>
+            </div>
+            <div className="sticky bottom-0 left-0 w-full bg-primary py-6">
+                <div className='flex items-center h-full px-4'>
+                    <div>
+                        <p className="text-xl text-white">${product.price}</p>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 
