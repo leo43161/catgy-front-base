@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#F8F0E5",
+        background: "#FFFCF3",
         primary: "#102C57",
-        light: "#A9B388",
+        light: "#E4D2BA",
       },
       fontFamily: {
         lexend: ['"Lexend"', 'sans-serif'], // Añadir la fuente Lexend
