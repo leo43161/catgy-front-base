@@ -8,7 +8,7 @@ const CategoryList = ({ setCategorySelected, categorySelected }) => {
         <div className="snap-start scroll-mx-6 shrink-0">
           <div onClick={() => setCategorySelected('')}>
             <div className={"rounded-lg font-bold text-[0.73rem] py-2 px-4 " + (categorySelected === '' ?
-              "hover:bg-light text-white bg-primary" :
+              "text-white bg-primary" :
               "text-primary border")}>
               Todos
             </div>
@@ -19,7 +19,7 @@ const CategoryList = ({ setCategorySelected, categorySelected }) => {
             <div className="snap-start scroll-mx-6 shrink-0" key={category._id}>
               <div onClick={() => setCategorySelected(category._id)}>
                 <div className={"rounded-lg font-bold text-[0.73rem] py-2 px-4 " + (categorySelected === category._id ?
-                  "hover:bg-light text-white bg-primary" :
+                  " text-white bg-primary" :
                   "text-primary border")}>
                   {category.name}
                 </div>

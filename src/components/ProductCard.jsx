@@ -19,14 +19,6 @@ export default function ProductCard({ product }) {
             alt={product.imagen}
             className="w-full h-56 object-cover"
           />
-          {/* <button
-          className={`absolute top-4 right-4 p-2 rounded-full ${isFavorited ? 'bg-red-500' : 'bg-white'} shadow`}
-          onClick={toggleFavorite}
-        >
-          <HeartIcon
-            className={`h-6 w-6 ${isFavorited ? 'text-white' : 'text-gray-500'}`}
-          />
-        </button> */}
         </div>
         <div className="p-4 flex-1 flex justify-between flex-col">
           <h3 className="text-xl font-semibold text-gray-900 mb-0">{product.name}</h3>

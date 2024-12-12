@@ -1,15 +1,29 @@
 import { useRouter } from 'next/router';
 import { useGetProductByIdQuery } from '@/redux/services/apiService';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setNavbarStyle } from '@/redux/slices/uiSlice';
 
 const Product = () => {
     const router = useRouter();
     const { id } = router.query;
+    const dispatch = useDispatch();
 
     // Consulta para obtener los detalles del producto
     const { data: product, isLoading, error } = useGetProductByIdQuery(id);
     console.log(error)
 
-    if (isLoading) return <p>Loading...</p>;
+    // Cambia el estilo del navbar al cargar la vista de producto
+    useEffect(() => {
+        dispatch(setNavbarStyle('absolute'));
+
+        // Opción para restablecer el estilo del navbar cuando se salga de la página
+        return () => {
+            dispatch(setNavbarStyle('static'));
+        };
+    }, [dispatch]);
+
+    if (isLoading) return <p></p>;
     if (error) return (
         <div className='text-2xl w-full h-screen flex justify-center items-center'>
             <h1>Producto no encontrado</h1>

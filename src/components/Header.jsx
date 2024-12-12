@@ -1,10 +1,20 @@
 import { ReceiptText, ArrowLeft } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 export default function Header() {
-    const inProduct = true;
+    const router = useRouter();
+    // Obtiene el estado navbarStyle desde el store
+    const navbarStyle = useSelector((state) => state.ui.navbarStyle);
+    const inProduct = navbarStyle === 'absolute'; // Determina si está en la vista del producto
+
+    const handleBack = () => {
+        router.back(); // Navega a la página anterior
+    };
+
     return (
         <div className={`flex justify-between items-center mb-4 pt-4 px-4 w-full ${inProduct && 'absolute'}`}>
-            {inProduct ? <div className="rounded-full bg-white p-2" >
+            {inProduct ? <div className="rounded-full bg-white p-2" onClick={handleBack}>
                 <ArrowLeft color="black" size={25} />
             </div> :
                 <div>
