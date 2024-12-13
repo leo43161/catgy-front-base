@@ -22,8 +22,6 @@ export default function Home() {
   return (
     <div className='px-4 pb-4'>
       <CategoryList categorySelected={categorySelected} setCategorySelected={setCategorySelected} />
-
-      <h2 className="text-2xl font-bold mb-4">Productos Recientes</h2>
       {/* <div className="">
           <ModelViewer/>
           </div> */}

@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     const MobilePrueba = true;
     const inProduct = true;
     return (
-        <div className="bg-neutral-50">
+        <div className="bg-neutral-50 min-h-screen">
             <Head>
                 <title>Catgy</title>
             </Head>
