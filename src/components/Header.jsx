@@ -1,6 +1,7 @@
 import { ReceiptText, ArrowLeft } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Header() {
     const router = useRouter();
@@ -18,22 +19,24 @@ export default function Header() {
                 <ArrowLeft color="black" size={28} />
             </div> :
                 <div>
-                    <h1 className={`text-3xl font-bold ${inProduct && 'text-white'}`}>MONET</h1>
+                    <h1 className={`text-3xl font-bold ${inProduct && 'text-white'} drop-shadow-md`}>MONET</h1>
                 </div>
             }
-            <div className={inProduct ? "rounded-full bg-white p-2" : ""} >
-                <div className='relative'>
-                    <span className="absolute flex h-3 w-3 top-[-4px] right-0">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span
-                            className="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[11px] text-white text-center"
-                        >
-                            5
+            <Link href={`/cart`}>
+                <div className={inProduct ? "rounded-full bg-white p-2" : ""} >
+                    <div className='relative'>
+                        <span className="absolute flex h-3 w-3 top-[-4px] right-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span
+                                className="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[11px] text-white text-center"
+                            >
+                                5
+                            </span>
                         </span>
-                    </span>
-                    <ReceiptText color="black" size={28} />
+                        <ReceiptText color="black" size={28} />
+                    </div>
                 </div>
-            </div>
+            </Link>
         </div>
     )
 }
