@@ -26,8 +26,8 @@ export default function Cart() {
       {seccion && <>
         <div className="min-h-svh">
           <CardCart handleOpenModal={handleOpenModal}></CardCart>
-          <CardCart></CardCart>
-          <CardCart></CardCart>
+          <CardCart handleOpenModal={handleOpenModal}></CardCart>
+          <CardCart handleOpenModal={handleOpenModal}></CardCart>
         </div>
         <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-5">
           <div className='flex items-center h-full px-4 justify-between'>
