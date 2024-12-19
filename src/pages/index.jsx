@@ -1,11 +1,13 @@
 /* import Layout from '../components/Layout'; */
 import CategoryList from '@/components/CategoryList';
 import ProductCard from '@/components/ProductCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReceiptText } from 'lucide-react';
 import { useGetProductsQuery } from '@/redux/services/apiService';
 import ModelViewer from '@/components/ModelViewer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { setNavbarStyle } from '@/redux/slices/uiSlice';
+import { BackSide } from 'three';
 
 export default function Home() {
   const [categorySelected, setCategorySelected] = useState('');
@@ -17,8 +19,16 @@ export default function Home() {
   }, { refetchOnMountOrArgChange: true });
   const MobilePrueba = true;
   const { products } = { products: _products ? _products.products : [] };
+  const dispatch = useDispatch();
 
-
+  useEffect(() => {
+    dispatch(setNavbarStyle({
+      absolute: false,
+      title: 'MONET',
+      order: true,
+      back: false
+    }));
+  }, [dispatch]);
   return (
     <div className='px-4 pb-4'>
       <CategoryList categorySelected={categorySelected} setCategorySelected={setCategorySelected} />

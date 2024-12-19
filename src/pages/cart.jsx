@@ -1,14 +1,25 @@
 import CardCart from '@/components/CardCart'
 import Modal from '@/components/Modal'
+import { setNavbarStyle } from '@/redux/slices/uiSlice'
 import { UtensilsCrossedIcon, ClipboardPen } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 export default function Cart() {
   const [seccion, setSeccion] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    dispatch(setNavbarStyle({
+      absolute: false,
+      title: 'Pedidos y Ordenes',
+      order: false,
+      back: true
+    }))
+  }, [])
 
   return (
     <>

@@ -15,13 +15,13 @@ const Product = () => {
 
     // Cambia el estilo del navbar al cargar la vista de producto
     useEffect(() => {
-        dispatch(setNavbarStyle('absolute'));
-
-        // Opción para restablecer el estilo del navbar cuando se salga de la página
-        return () => {
-            dispatch(setNavbarStyle('static'));
-        };
-    }, [dispatch]);
+        dispatch(setNavbarStyle({
+            absolute: true,
+            title: '',
+            order: true,
+            back: true
+        }));
+    }, []);
 
     if (isLoading) return <p></p>;
     if (error) return (

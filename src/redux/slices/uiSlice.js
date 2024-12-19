@@ -4,7 +4,12 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState: {
     theme: 'light',
-    navbarStyle: 'static',
+    navbarStyle: {
+      absolute: false,
+      title: 'Home',
+      order: true,
+      back: false,
+    },
     isLoading: false,
     notifications: [],
     language: 'es',
