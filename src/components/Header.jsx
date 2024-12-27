@@ -56,7 +56,7 @@ export default function Header() {
                                 <span
                                     className="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[11px] text-white text-center"
                                 >
-                                    5
+                                    3
                                 </span>
                             </span>
                             <ReceiptText color="black" size={28} />
