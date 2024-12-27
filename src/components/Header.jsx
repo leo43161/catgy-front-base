@@ -24,10 +24,12 @@ export default function Header() {
         >
             <>
                 {navbarStyle.back && (
-                    <div
-                        className={`rounded-full p-1 ${navbarStyle.absolute ? 'bg-white' : ''} w-1/12 flex items-center`}
-                        onClick={handleBack}>
-                        <ArrowLeft color="black" size={28} />
+                    <div className="w-1/12">
+                        <div
+                            className={`rounded-full p-1 ${navbarStyle.absolute ? 'bg-white' : ''} flex items-center justify-center w-12 h-12`}
+                            onClick={handleBack}>
+                            <ArrowLeft color="black" size={30} />
+                        </div>
                     </div>
                 )}
             </>
@@ -46,8 +48,8 @@ export default function Header() {
                     <div
                         className={
                             navbarStyle.absolute
-                                ? 'rounded-full bg-white p-2'
-                                : ''
+                                ? 'rounded-full bg-white flex items-center justify-center w-12 h-12'
+                                : 'w-12 h-12 flex items-center justify-center'
                         }
                     >
                         <div className="relative">
@@ -59,11 +61,18 @@ export default function Header() {
                                     3
                                 </span>
                             </span>
-                            <ReceiptText color="black" size={28} />
+                            <ReceiptText color="black" size={30} />
                         </div>
                     </div>
                 </Link>
             )}
+            {
+                navbarStyle.back && navbarStyle.title && (
+                    <div class="w-1/12">
+
+                    </div>
+                )
+            }
         </div>
     );
 }
