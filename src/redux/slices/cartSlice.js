@@ -15,7 +15,8 @@ export const cartSlice = createSlice({
             updatedAt: "",
             total: null,
             items: [],
-            cuantity: 0
+            cuantity: 0,
+            nextId: 1
         }
     },
     reducers: {
@@ -29,14 +30,18 @@ export const cartSlice = createSlice({
                     }
                     return item
                 })
-            } else */ state.value.items.push(action.payload)
-
+            } else state.value.items.push(...action.payload)*/
+            state.value.items.push({
+                ...action.payload,
+                cartId: state.value.nextId // Asignar ID único
+            });
+            state.value.nextId += 1; // Incrementar el contador
             updateTotal(state);
 
             state.value.updatedAt = new Date().toLocaleString()
         },
         removeCartItem: (state, action) => {
-            state.value.items = state.value.items.filter(item => item._id !== action.payload)
+            state.value.items = state.value.items.filter(item => item.cartId !== action.payload)
             updateTotal(state);
         },
         /*         addItem: (state, action) => {
@@ -66,11 +71,12 @@ export const cartSlice = createSlice({
             state.value.total = 0;
             state.value.cuantity = 0;
             state.value.updatedAt = new Date().toLocaleString();
+            state.value.nextId = 1; // Reiniciar el contador si se elimina todo
         },
         addAnnotation: (state, action) => {
-            const { _id, annotation } = action.payload;
+            const { cartId, annotation } = action.payload;
             state.value.items = state.value.items.map(item => {
-                if (item._id === _id) {
+                if (item.cartId === cartId) {
                     return { ...item, annotation };
                 }
                 return item;
