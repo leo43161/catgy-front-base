@@ -3,12 +3,15 @@ import Modal from '@/components/Modal'
 import { setNavbarStyle } from '@/redux/slices/uiSlice'
 import { UtensilsCrossedIcon, ClipboardPen } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Cart() {
   const [seccion, setSeccion] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const products = useSelector((state) => state.cart.value.items);
+  console.log(products);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -36,9 +39,10 @@ export default function Cart() {
       {/* PEDIDO */}
       {seccion && <>
         <div className="min-h-svh">
-          <CardCart handleOpenModal={handleOpenModal}></CardCart>
-          <CardCart handleOpenModal={handleOpenModal}></CardCart>
-          <CardCart handleOpenModal={handleOpenModal}></CardCart>
+          {products.map((product) => (
+            <CardCart key={product._id} handleOpenModal={handleOpenModal} product={product}></CardCart>
+          ))}
+          {/* <CardCart handleOpenModal={handleOpenModal}></CardCart> */}
         </div>
         <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-5">
           <div className='flex items-center h-full px-4 justify-between'>

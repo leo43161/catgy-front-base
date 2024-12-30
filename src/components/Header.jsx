@@ -10,6 +10,7 @@ export default function Header() {
 
     // Obtiene el estado navbarStyle desde el store
     const navbarStyle = useSelector((state) => state.ui.navbarStyle);
+    const cuantityCart = useSelector((state) => state.cart.value.cuantity);
 
     // Función para manejar el botón de regreso
     const handleBack = () => {
@@ -54,11 +55,11 @@ export default function Header() {
                     >
                         <div className="relative">
                             <span className="absolute flex h-3 w-3 top-[-4px] right-0">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span className={`absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 ${cuantityCart > 0 && "animate-ping"}`}></span>
                                 <span
                                     className="relative flex justify-center items-center rounded-full h-3 w-3 bg-primary text-[11px] text-white text-center"
                                 >
-                                    3
+                                    {cuantityCart}
                                 </span>
                             </span>
                             <ReceiptText color="black" size={30} />
@@ -68,7 +69,7 @@ export default function Header() {
             )}
             {
                 navbarStyle.back && navbarStyle.title && (
-                    <div class="w-1/12">
+                    <div className="w-1/12">
 
                     </div>
                 )

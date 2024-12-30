@@ -3,6 +3,7 @@ import { useGetProductByIdQuery } from '@/redux/services/apiService';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setNavbarStyle } from '@/redux/slices/uiSlice';
+import { addCartItem } from '@/redux/slices/cartSlice';
 
 const Product = () => {
     const router = useRouter();
@@ -22,6 +23,12 @@ const Product = () => {
             back: true
         }));
     }, []);
+
+    const addCartProduct = () => {
+        if (product) {
+            dispatch(addCartItem(product))
+        }
+    }
 
     if (isLoading) return <p></p>;
     if (error) return (
@@ -49,7 +56,12 @@ const Product = () => {
                         <p className="text-2xl font-bold"><span className='font-bold text-primary'>$</span>{product.price}</p>
                     </div>
                     <div>
-                        <button className="rounded ml-2 shadow text-white bg-primary py-2 px-4 font-bold">Agregar a la orden</button>
+                        <button
+                            className="rounded ml-2 shadow text-white bg-primary py-2 px-4 font-bold"
+                            onClick={addCartProduct}
+                        >
+                            Agregar a la orden
+                        </button>
                     </div>
                 </div>
             </div>
