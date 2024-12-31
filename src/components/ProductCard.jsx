@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Link href={`/product/${product._id}`} passHref legacyBehavior>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white card-glass flex flex-col h-full">
+      <div className="max-w-sm rounded-md overflow-hidden shadow-lg bg-white card-glass flex flex-col h-full">
         <div className="relative flex-none">
           <img
             src={`${process.env.URL_IMG}products/${product.imagen}`}
