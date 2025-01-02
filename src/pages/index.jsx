@@ -36,7 +36,7 @@ export default function Home() {
           <ModelViewer/>
           </div> */}
       <div className='px-1'>
-        <div className='w-full h-[19vh] bg-gradient-to-r from-primary to-primary/80 rounded-lg mb-8 flex shadow'>
+        <div className='w-full h-[18vh] bg-gradient-to-r from-primary to-primary/80 rounded-lg mb-8 flex shadow'>
           <div className='w-7/12 h-full'>
             <div className='flex flex-col justify-around h-full ps-5 py-3 gap-3'>
               <h1 className="text-white text-2xl">
@@ -51,12 +51,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class="flex items-center justify-center w-5/12">
+          <div className="flex items-center justify-center w-5/12">
             <div className='relative h-32 w-full flex justify-center items-center'>
               <img
                 src="images/imagen-png-1.png"
                 alt="Plato de comida"
-                class="absolute -top-5 z-50 object-cover w-[42vw] max-w-none drop-shadow-lg"
+                className="absolute -top-5 z-50 object-cover w-[40vw] md:w-44 max-w-none drop-shadow-lg"
               />
             </div>
           </div>
