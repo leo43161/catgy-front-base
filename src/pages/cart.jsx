@@ -1,4 +1,4 @@
-import CardCart from '@/components/CardCart'
+import CardCart from '@/components/cart/CardCart'
 import Modal from '@/components/Modal'
 import { setNavbarStyle } from '@/redux/slices/uiSlice'
 import { UtensilsCrossedIcon, ClipboardPen } from 'lucide-react'

@@ -1,13 +1,10 @@
 /* import Layout from '../components/Layout'; */
-import CategoryList from '@/components/CategoryList';
-import ProductCard from '@/components/ProductCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { ReceiptText } from 'lucide-react';
+import CategoryList from '@/components/categories/CategoryList';
+import ProductCard from '@/components/product/ProductCard';
+import { useDispatch } from 'react-redux';
 import { useGetProductsQuery } from '@/redux/services/apiService';
-import ModelViewer from '@/components/ModelViewer';
 import { useEffect, useState } from 'react';
 import { setNavbarStyle } from '@/redux/slices/uiSlice';
-import { BackSide } from 'three';
 
 export default function Home() {
   const [categorySelected, setCategorySelected] = useState('');
@@ -32,11 +29,8 @@ export default function Home() {
   return (
     <div className='px-4 pb-4'>
       <CategoryList categorySelected={categorySelected} setCategorySelected={setCategorySelected} />
-      {/* <div className="">
-          <ModelViewer/>
-          </div> */}
       <div className='px-1'>
-        <div className='w-full h-[18vh] bg-gradient-to-r from-primary to-primary/80 rounded-lg mb-8 flex shadow'>
+        <div className='w-full h-[18vh] md:h-[9.3em] bg-gradient-to-r from-primary to-primary/80 rounded-lg mb-8 flex shadow'>
           <div className='w-7/12 h-full'>
             <div className='flex flex-col justify-around h-full ps-5 py-3 gap-3'>
               <h1 className="text-white text-2xl">
@@ -56,7 +50,7 @@ export default function Home() {
               <img
                 src="images/imagen-png-1.png"
                 alt="Plato de comida"
-                className="absolute -top-5 z-50 object-cover w-[40vw] md:w-44 max-w-none drop-shadow-lg"
+                className="absolute -top-5 z-50 object-cover w-[40vw] md:w-[10.8em] max-w-none drop-shadow-lg"
               />
             </div>
           </div>
