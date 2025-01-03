@@ -26,9 +26,13 @@ const CategoryList = ({ setCategorySelected, categorySelected }) => {
               </div>
             </div>
           ))
-        ) : (
-          <p>Cargando...</p>
-        )}
+        ) : (<div>
+          <div className="snap-start scroll-mx-6 shrink-0">
+            <div className="rounded-lg font-bold text-[0.83rem] py-2 px-4 text-primary border">
+              Cargando...
+            </div>
+          </div>
+        </div>)}
       </div>
     </div>
   );
