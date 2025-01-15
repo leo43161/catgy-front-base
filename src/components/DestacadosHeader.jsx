@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function DestacadosHeader({ img, title, left, top, color }) {
     return (
-        <div className='w-full p-1'>
+        <div className='w-full px-1 py-2'>
             <div className='w-full h-[18vh] md:h-[9.3em] rounded-lg flex shadow' style={{ backgroundColor: color }}>
                 <div className='w-7/12 h-full'>
                     <div className='flex flex-col justify-around h-full ps-5 py-3 gap-3'>
