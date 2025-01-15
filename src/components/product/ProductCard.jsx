@@ -4,15 +4,18 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { addCartItem } from '@/redux/slices/cartSlice';
 import { useDispatch } from 'react-redux';
+import { useRouter } from "next/router";
 
 export default function ProductCard({ product }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const addCartProduct = (event) => {
     event.stopPropagation(); // Detiene la propagación del clic hacia el enlace
     if (product) {
       dispatch(addCartItem(product))
+      router.push("/cart");
     }
   }
 

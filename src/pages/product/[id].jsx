@@ -27,6 +27,7 @@ const Product = () => {
     const addCartProduct = () => {
         if (product) {
             dispatch(addCartItem(product))
+            router.push("/cart");
         }
     }
 
