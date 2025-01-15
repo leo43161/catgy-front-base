@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 export default function Carousel({
     children: slides,
     autoSlide = false,
@@ -18,49 +18,46 @@ export default function Carousel({
         return () => clearInterval(slideInterval)
     }, [])
     return (
-        <div className="overflow-hidden relative">
+        <div className="relative overflow-hidden">
             <div
-                className="flex transition-transform ease-out duration-500 flex-nowrap"
+                className="flex transition-transform ease-out duration-500"
                 style={{
-                    transform: `translateX(-${curr * 100}%)`,
+                    transform: `translateX(-${curr * 100}%)`, // Cambiamos 104.2% por 100% para mantener el diseño fluido
                 }}
             >
                 {slides.map((slide, index) => (
                     <div
                         key={index}
-                        className="w-full flex-shrink-0" // Asegura que cada slide ocupe todo el ancho
+                        className="min-w-full flex-shrink-0" // Asegura que cada slide ocupe todo el ancho
                     >
                         {slide}
                     </div>
                 ))}
             </div>
-            <div className="absolute inset-0 flex items-center justify-between p-4">
+            <div className="absolute inset-0 flex items-center justify-between px-2 py-4">
                 <button
                     onClick={prev}
-                    className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
+                    className="p-px rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
                 >
-                    iz
+                    <ChevronLeft color="black" size={18} />
                 </button>
                 <button
                     onClick={next}
-                    className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
+                    className="p-px rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
                 >
-                    der
+                    <ChevronRight color="black" size={18} />
                 </button>
             </div>
 
-            <div className="absolute bottom-4 right-0 left-0">
+            {/* <div className="absolute bottom-6 right-0 left-0">
                 <div className="flex items-center justify-center gap-2">
                     {slides.map((_, i) => (
                         <div
-                            className={`
-              transition-all w-3 h-3 bg-white rounded-full
-              ${curr === i ? "p-2" : "bg-opacity-50"}
-            `}
+                            className={`transition-all px-5 w-3 h-3 bg-white rounded-full ${curr === i ? "p-2" : "bg-opacity-50"}`}
                         />
                     ))}
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
