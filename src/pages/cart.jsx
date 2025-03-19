@@ -1,3 +1,4 @@
+import ViewOrder from '@/components/cart/ViewOrder'
 import CardCart from '@/components/cart/CardCart'
 import Modal from '@/components/Modal'
 import { setNavbarStyle } from '@/redux/slices/uiSlice'
@@ -76,9 +77,7 @@ export default function Cart() {
       {/* FIN PEDIDO */}
       {/* ORDENES */}
       {!seccion && <>
-        <div className="min-h-svh">
-          Orden
-        </div>
+        <ViewOrder></ViewOrder>
       </>}
       {/* FIN ORDENES */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
