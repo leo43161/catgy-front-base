@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ReceiptText, Clock, ChevronDown, ChevronUp } from 'lucide-react';
+import { ReceiptText, Clock, ChevronDown, ChevronUp, Banknote, CreditCard } from 'lucide-react';
 
 const OrdersTab = () => {
     const [activeOrder, setActiveOrder] = useState(null);
@@ -156,16 +156,26 @@ const OrdersTab = () => {
                     {/* Total Section */}
                 </div>
             </div>
-            <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-5">
-                <div className="flex items-center h-full px-4 justify-between">
-                    <div className="flex flex-col justify-center items-center">
+            <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-4">
+                <div className="flex flex-col px-4">
+                    <div className="flex justify-between items-center mb-3">
+                        <p className="text-lg font-bold">Total a pagar:</p>
                         <p className="text-2xl font-bold">
                             <span className="font-bold text-primary">$</span>{getTotalOrders()}
                         </p>
                     </div>
-                    <div>
-                        <button className="rounded ml-2 shadow text-white bg-primary py-2 px-4 font-bold w-44">
-                            Ordenar
+                    <div className="flex gap-3">
+                        <button
+                            className="flex-1 flex justify-center items-center gap-2 rounded shadow text-white bg-green-600 py-3 px-4 font-bold"
+                        >
+                            <Banknote size={20} />
+                            <span>Pagar en Efectivo</span>
+                        </button>
+                        <button 
+                            className="flex-1 flex justify-center items-center gap-2 rounded shadow text-white bg-blue-600 py-3 px-4 font-bold"
+                        >
+                            <CreditCard size={20} />
+                            <span>Mercado Pago</span>
                         </button>
                     </div>
                 </div>
