@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ReceiptText, Clock, ChevronDown, ChevronUp, Banknote, CreditCard } from 'lucide-react';
+import OrderPayment from './OrderPayment';
 
 const OrdersTab = () => {
     const [activeOrder, setActiveOrder] = useState(null);
@@ -34,7 +35,7 @@ const OrdersTab = () => {
         },
         {
             id: 3,
-            status: 'completed',
+            status: 'pagado',
             time: 'Yesterday, 8:15 PM',
             items: [
                 { name: 'Beef Tacos', quantity: 2, notes: "", price: 9.98 },
@@ -51,6 +52,8 @@ const OrdersTab = () => {
                 return 'bg-amber-100 text-amber-800';
             case 'completed':
                 return 'bg-green-100 text-green-800';
+            case 'pagado':
+                return 'bg-blue-100 text-green-800';
             default:
                 return 'bg-gray-100 text-gray-800';
         }
@@ -62,6 +65,8 @@ const OrdersTab = () => {
                 return 'In Progress';
             case 'completed':
                 return 'Completed';
+            case 'pagado':
+                return 'Pagado';
             default:
                 return status;
         }
@@ -69,7 +74,7 @@ const OrdersTab = () => {
 
     // Función para calcular el total de todas las órdenes
     const getTotalOrders = () => {
-        return orders.reduce((sum, order) => sum + order.total, 0).toFixed(2);
+        return orders.reduce((sum, order) => order.status != "pagado" ? sum + order.total : sum, 0).toFixed(2);
     };
 
     return (
@@ -156,7 +161,8 @@ const OrdersTab = () => {
                     {/* Total Section */}
                 </div>
             </div>
-            <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-4">
+            <OrderPayment></OrderPayment>
+            {/* <div className="sticky bottom-0 left-0 w-full bg-gray-100 py-4">
                 <div className="flex flex-col px-4">
                     <div className="flex justify-between items-center mb-3">
                         <p className="text-lg font-bold">Total a pagar:</p>
@@ -171,7 +177,7 @@ const OrdersTab = () => {
                             <Banknote size={20} />
                             <span>Pagar en Efectivo</span>
                         </button>
-                        <button 
+                        <button
                             className="flex-1 flex justify-center items-center gap-2 rounded shadow text-white bg-blue-600 py-3 px-4 font-bold"
                         >
                             <CreditCard size={20} />
@@ -179,7 +185,7 @@ const OrdersTab = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };
