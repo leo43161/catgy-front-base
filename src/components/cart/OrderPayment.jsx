@@ -16,10 +16,14 @@ export default function OrderPayment() {
     const handleMercadoPago = async () => {
         setLoading(true);
         try {
-            const response = await fetch("/api/createPreference", {
+            const response = await fetch("/api/mp/create-preference", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ orders }),
+                body: JSON.stringify({
+                    title: "ordenessss",
+                    quantity: 1,
+                    unit_price: Number(getTotalOrders()),
+                }),
             });
             const data = await response.json();
             dispatch(setPreferenceId(data.preferenceId));
