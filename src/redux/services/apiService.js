@@ -16,6 +16,13 @@ export const apiService = createApi({
     getCategories: builder.query({
       query: () => 'categories?type=all',
     }),
+    putCallTable: builder.mutation({
+      query: (params) => ({
+        url: `/callTable`,
+        method: 'PUT',
+        body: params,
+      }),
+    })
   }),
 });
 
