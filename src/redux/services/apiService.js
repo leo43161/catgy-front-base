@@ -18,9 +18,9 @@ export const apiService = createApi({
     }),
     putCallTable: builder.mutation({
       query: (params) => ({
-        url: `/callTable`,
+        url: `/tables/${/* params.id */14}`,
         method: 'PUT',
-        body: params,
+        body: { alerta: "llamado" },
       }),
     })
   }),
